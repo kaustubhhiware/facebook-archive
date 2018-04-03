@@ -49,18 +49,18 @@ def messages(loc, loop=False, toplot=True,m_id=-1, fname=''):
     first = min(d2)
     maxhours = int((max(d2) - first).total_seconds() / 3600) + 1
     msgcount = [0] * int(maxhours)
+    monthwise, hourwise = [0]*13, [0]*25
     # count number of friends each day, cumulative
     for i in range(len(d2)):
         hours_diff = (d2[i] - first).total_seconds() / 3600
         msgcount[int(hours_diff)] += 1
-    xaxis = [ datetime.datetime.now() - timedelta(hours=maxhours-i) for i in range(maxhours)  ]
-    cumulative_msgs = np.cumsum(msgcount).tolist()
-
-    monthwise, hourwise = [0]*13, [0]*25
-    for i in range(len(d2)):
         monthwise[d2[i].month] += 1
         hourwise[d2[i].hour] += 1
 
+    xaxis = [ datetime.datetime.now() - timedelta(hours=maxhours-i) for i in range(maxhours)  ]
+    cumulative_msgs = np.cumsum(msgcount).tolist()
+
+    
     if toplot:
         print('Plotting new messages per hour and cumulative messages')
         fig, ax = plt.subplots()

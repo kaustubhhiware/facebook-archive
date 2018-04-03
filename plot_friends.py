@@ -55,10 +55,13 @@ def friends():
             dates[i] = today
     maxdays = int((dates[-1] - firstdate).total_seconds() / 86400) + 1
     frndcount = [0] * int(maxdays)
+    monthwise = [0]*13
     # count number of friends each day, cumulative
     for i in range(len(dates)):
         days_diff = (dates[i] - firstdate).total_seconds() / 86400
         frndcount[int(days_diff)] += 1
+        monthwise[dates[i].month] += 1
+
     xaxis = [ datetime.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays)  ]
     cumulative_friends = np.cumsum(frndcount).tolist()
 
@@ -78,6 +81,10 @@ def friends():
     plt.legend(loc='upper left', ncol=2)
     plt.show()
 
+    print('Plotting monthwise friends')
+    plt.plot(range(13), monthwise, label='per month')
+    plt.legend(loc='upper left', ncol=2)
+    plt.show()
 
 if __name__ == '__main__':
     friends()

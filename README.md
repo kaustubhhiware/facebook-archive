@@ -21,6 +21,10 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
 
  ![](images/friends-each.png)
 
+* Plot messages as a function of month.
+
+ ![](images/friends-month.png)
+
 ### Messages
 
 The following is available for either a specific chat (person / group) or for all messages.
@@ -40,6 +44,14 @@ The following is available for either a specific chat (person / group) or for al
 * Plot messages as a function of month.
 
  ![](images/msgs-month.png)
+
+## Observations
+
+1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
+
+2. I tend to message less during exams (Feb, Apr, Sep, Nov).
+
+3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
 
 ## Usage
 
@@ -69,6 +81,20 @@ What's this id?
 1. Open index.html in `facebook-yourfacebookusername`
 2. Click messages. Search for the person / conversation you want to analyse.
 3. Clicking on that chat should open a url like ; 'file:///home/kaustubh/GitHub/facebook-kaustubhhiware/messages/511.html'. For this particular chat, 511 is the id for this particular conversation.
+
+## Why
+
+I always wanted to know how many friends I make every month. It would have been infeasible to make a webapp out of this because so many API calls would be so _slow_, and whosoever wants to work with Facebook's Graph API?
+
+Plus it was raining and I couldn't go to MS's Hall Day till after the rain stopped.
+
+Have a feature request? See an interesting avenue not utilised yet with facebook's archive? Let me know by making a new issue.
+
+## ToDos
+
+- [ ] Plot number of messages with each friend as a function of time. Since this could get messy, plot only top 10-20 friends.
+ This way I'll know who're really my friends and who just pretend to be.
+ 
 
 ## License
 
