@@ -55,6 +55,8 @@ The following is available for either a specific chat (person / group) or for al
 
 ## Usage
 
+Install requirements with `pip install -r requirements.txt`
+
 ### Friends
 
 ```
@@ -94,7 +96,7 @@ Have a feature request? See an interesting avenue not utilised yet with facebook
 
 - [ ] Plot number of messages with each friend as a function of time. Since this could get messy, plot only top 10-20 friends.
  This way I'll know who're really my friends and who just pretend to be.
- 
+- [ ] Pick larger intervals to plot for clearer graphs, less shaky.
 
 ## License
 
