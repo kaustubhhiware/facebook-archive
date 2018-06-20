@@ -1,5 +1,15 @@
 # facebook-archive
-Just some fun you can have with facebook's archive data.
+[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)
+
+[![Chat at Slack](https://img.shields.io/badge/chat%20on%20-Slack-brightgreen.svg?style=for-the-badge)](https://girlscriptgssoc.slack.com/messages/CB4V6N62H/details/)
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php) ![Python](https://img.shields.io/badge/python-2.7-blue.svg)
+
+
+![GitHub open pull requests](https://img.shields.io/github/issues-pr/kaustubhhiware/facebook-archive.svg) 
+![GitHub open issues](https://img.shields.io/github/issues/kaustubhhiware/facebook-archive.svg)
+
+> Analyse everything facebook knows about you, through their own archive.
 
 In light of the recent facebook's data breach, Mark Zuckerberg made all the data available for each user via Facebook. You're going to need to download it, we'll get to it shortly. There are some things that would take a lot of time (too costly API calls) online, but can be easily done on archived data.
 
@@ -8,6 +18,19 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
 1. Head on to [Facebook > Settings > General Settings](https://www.facebook.com/settings).
 2. Click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. (Mine was 634MB).
  ![](images/archive-download.png)
+
+## Contributing
+
+Your contributions are always welcome :smile: ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first.
+
+Before working on an issue / feature, it is **crucial** that you're assigned the task on a GitHub issue.
+* If a relevant issue already exists, discuss on the issue and get yourself assigned on GitHub.
+* If no relevant issue exists, open a new issue and get it assigned to yourself on GitHub.
+Please proceed with a Pull Request only after you're assigned. It'd be a waste of your time as well as ours if you have not contacted us before hand when working on some feature / issue.
+
+If you are here for GirlScript's Summer of Code and wish to seek assistance, feel free to contact any of the mentors on [slack](https://girlscriptgssoc.slack.com/) - 
+[@kaustubhhiware](https://girlscriptgssoc.slack.com/messages/DB0B3GBEG/), [@techytushar](https://girlscriptgssoc.slack.com/messages/DBBGEQAPQ/),
+[@Anubhav](https://girlscriptgssoc.slack.com/messages/DBAK57AQ2/), [@fhackdroid](https://girlscriptgssoc.slack.com/messages/DBAK4TUP4/), [@Roopal](https://girlscriptgssoc.slack.com/messages/DB92S68SX).
 
 ## Features
 
