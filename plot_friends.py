@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import os
-import re
-from copy import deepcopy
 import timestring
 import datetime
 from datetime import timedelta
 import dateutil.parser
 import numpy as np
+import json
+from tabulate import tabulate
 
 """
 Plot your friends along the way.
@@ -22,37 +22,20 @@ def friends():
         print("The provided location doesn't seem to be right")
         exit(1)
     
-    fname = loc+'/html/friends.htm'
+    fname = loc+'/friends/friends.json'
     if not os.path.isfile(fname):
-        print("File nahi hai yeh")
-        print(1)
+        print("The file friends.json is not present at the entered location.")
+        exit(1)
 
     with open(fname, 'r') as f:
-        txt = f.readlines()
-    txt = ''.join(txt)
-    h2tags = [m.start() for m in re.finditer('<h2>', txt)]
+        txt = f.read()
     
-    t = txt[h2tags[0]:h2tags[1]]
-    t = t[ t.index('<ul>') + 4 : t.index('</ul>') ]
-    t = t.split('</li>')
-    t = filter(None, t)
-    for i in range(len(t)):
-        t[i] = t[i][4:-1]
-        t[i] = t[i].split(' (')
-
-    s = deepcopy(t)
-    for i in range(len(s)):
-        s[i][1] = timestring.Date(s[i][1])
-        s[i][1] = s[i][1].date
-    s.reverse()
-
-    dates = [i[1] for i in s]
-    firstdate = dates[0]
-    for i in range(len(dates)):
-        if dates[i] == 'Yesterday':
-            dates[i] = yesterday
-        elif dates[i] == 'Today':
-            dates[i] = today
+    data = json.loads(txt)
+    
+    dates = [timestring.Date(i["timestamp"]).date for i in data["friends"]]
+    dates.reverse()
+    
+    firstdate = dates[0]    
     maxdays = int((dates[-1] - firstdate).total_seconds() / 86400) + 1
     frndcount = [0] * int(maxdays)
     monthwise = [0]*13
@@ -61,8 +44,8 @@ def friends():
         days_diff = (dates[i] - firstdate).total_seconds() / 86400
         frndcount[int(days_diff)] += 1
         monthwise[dates[i].month] += 1
-
-    xaxis = [ datetime.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays)  ]
+    
+    xaxis = [ datetime.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays) ]
     cumulative_friends = np.cumsum(frndcount).tolist()
 
     print('Plotting new friends per day and cumulative friends')
@@ -86,5 +69,13 @@ def friends():
     plt.legend(loc='upper left', ncol=2)
     plt.show()
 
+    print('\nSome statistics based on the data: ', maxdays)
+    stats = []
+    stats.append(["Total Friends", cumulative_friends[-1]])
+    max_frnd_day = xaxis[frndcount.index(max(frndcount))]
+    stats.append(["Maximum Friends made on", max_frnd_day.date()])
+    stats.append(["Maximum Friends made in month", max_frnd_day.strftime('%B')])
+    print(tabulate(stats, headers=['Property', 'Value'], tablefmt='fancy_grid'))
+    
 if __name__ == '__main__':
     friends()
