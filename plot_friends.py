@@ -69,12 +69,13 @@ def friends():
     plt.legend(loc='upper left', ncol=2)
     plt.show()
 
-    print('\nSome statistics based on the data: ', maxdays)
+    print('\nSome statistics based on the data: ')
     stats = []
     stats.append(["Total Friends", cumulative_friends[-1]])
     max_frnd_day = xaxis[frndcount.index(max(frndcount))]
+    max_frnd_month = datetime.datetime(2000, monthwise.index(max(monthwise)), 1)
     stats.append(["Maximum Friends made on", max_frnd_day.date()])
-    stats.append(["Maximum Friends made in month", max_frnd_day.strftime('%B')])
+    stats.append(["Maximum Friends made in month", max_frnd_month.strftime('%B')])
     print(tabulate(stats, headers=['Property', 'Value'], tablefmt='fancy_grid'))
     
 if __name__ == '__main__':

@@ -16,7 +16,7 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
 ## Getting the data
 
 1. Head on to [Facebook > Settings > General Settings](https://www.facebook.com/settings).
-2. Click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. (Mine was 634MB).
+2. Select the JSON data format and click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. (Mine was 634MB).
  ![](images/archive-download.png)
 
 ## Contributing
@@ -84,9 +84,13 @@ Install requirements with `pip install -r requirements.txt`
 
 ```
 > python plot_friends.py
-Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware"
+Enter facebook archive extracted location: <location of extracted data folder,  e.g.: "facebook-kaustubhhiware">
 ```
-
+You can also run the script on sample data included in the examples folder:
+```python
+> python plot_friends.py
+Enter facebook archive extracted location: ./examples
+```
 ### Messages
 
 * Plot messages across all conversations.
