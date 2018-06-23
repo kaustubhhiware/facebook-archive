@@ -33,3 +33,11 @@ Please proceed with a Pull Request only after you're assigned. It'd be a waste o
 7) Do `git push origin your_branch(here, awesome_feature)` to push code into your branch.
 
 8) Finally, create a PR by clicking on the `New pull request` button [here](https://github.com/kaustubhhiware/facebook-archive/pulls).
+
+# ToDos
+
+These are the things to note, irrespective of what issue you are working on.
+
+- [ ] Pick larger intervals to plot for clearer graphs, less shaky.
+- [ ] Make sure the scripts are compatible with the latest version of JSON data provided by facebook's archive - [#2](https://github.com/kaustubhhiware/facebook-archive/issues/2).
+- [ ] Document all functions, use docstrings, intuitive variable names - [#16](https://github.com/kaustubhhiware/facebook-archive/issues/16).

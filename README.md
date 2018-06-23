@@ -13,68 +13,28 @@
 
 In light of the recent facebook's data breach, Mark Zuckerberg made all the data available for each user via Facebook. You're going to need to download it, we'll get to it shortly. There are some things that would take a lot of time (too costly API calls) online, but can be easily done on archived data.
 
+## Table of Contents
+
+* [Getting the data](#getting-the-data)
+* [Usage](#usage)
+  - [Friends](#friends)
+  - [Messages](#messages)
+* [Contributing](#contributing)
+* [Features](#features)
+  - [Your friends](#your-friends)
+  - [Your messages](#your-messages)
+* [Observations](#observations)
+* [Why](#why)
+* [License](#why)
+
 ## Getting the data
 
-1. Head on to [Facebook > Settings > General Settings](https://www.facebook.com/settings).
-2. Select the JSON data format and click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. (Mine was 634MB).
+1. Head on to [Facebook > Settings > General Settings > Your facebook information](https://www.facebook.com/settings?tab=your_facebook_informations).
+2. Select the JSON data format and click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. Disable photo and video download options to save some bandwidth. (My archive was ~300MB).
+3. If possible, downlaod the same data in HTML format. It is much easier to browse through your archive and spot some interesting patterns in the HTML format, however this is not necessary. The JSON format will suffice for processing, refer [#2](https://github.com/kaustubhhiware/facebook-archive/issues/2).
+
  ![](images/archive-download.png)
-
-## Contributing
-
-Your contributions are always welcome :smile: ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first.
-
-Before working on an issue / feature, it is **crucial** that you're assigned the task on a GitHub issue.
-* If a relevant issue already exists, discuss on the issue and get yourself assigned on GitHub.
-* If no relevant issue exists, open a new issue and get it assigned to yourself on GitHub.
-Please proceed with a Pull Request only after you're assigned. It'd be a waste of your time as well as ours if you have not contacted us before hand when working on some feature / issue.
-
-If you are here for GirlScript's Summer of Code and wish to seek assistance, feel free to contact any of the mentors on [slack](https://girlscriptgssoc.slack.com/) - 
-[@kaustubhhiware](https://girlscriptgssoc.slack.com/messages/DB0B3GBEG/), [@techytushar](https://girlscriptgssoc.slack.com/messages/DBBGEQAPQ/),
-[@Anubhav](https://girlscriptgssoc.slack.com/messages/DBAK57AQ2/), [@fhackdroid](https://girlscriptgssoc.slack.com/messages/DBAK4TUP4/), [@Roopal](https://girlscriptgssoc.slack.com/messages/DB92S68SX).
-
-## Features
-
-### Your friends
-
-* Plot the friends you make every day (blue), and the friends so far (orange).
-
- ![](images/friends-cumulative.png)
-
-* Plot exclusively the friends you make each day.
-
- ![](images/friends-each.png)
-
-* Plot messages as a function of month.
-
- ![](images/friends-month.png)
-
-### Messages
-
-The following is available for either a specific chat (person / group) or for all messages.
-
-* Plot all messages so far, with new messages each hour.
-
- ![](images/msgs-cumulative.png)
-
-* Plot only new messages each hour.
-
- ![](images/msgs-each.png)
-
-* Plot messages as a function of hour (0-24)
-
- ![](images/msgs-hour.png)
-
-* Plot messages as a function of month.
-
- ![](images/msgs-month.png)
-
-## Observations
-
-1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
-
-2. I tend to message less during exams (Feb, Apr, Sep, Nov).
-
-3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
+[↥ back to top](#table-of-contents)
 
 ## Usage
 
@@ -91,7 +51,11 @@ You can also run the script on sample data included in the examples folder:
 > python plot_friends.py
 Enter facebook archive extracted location: ./examples
 ```
+[↥ back to top](#table-of-contents)
+
 ### Messages
+
+**Will be updated soon**
 
 * Plot messages across all conversations.
  ```
@@ -110,6 +74,83 @@ What's this id?
 1. Open index.html in `facebook-yourfacebookusername`
 2. Click messages. Search for the person / conversation you want to analyse.
 3. Clicking on that chat should open a url like ; 'file:///home/kaustubh/GitHub/facebook-kaustubhhiware/messages/511.html'. For this particular chat, 511 is the id for this particular conversation.
+[↥ back to top](#table-of-contents)
+
+## Contributing
+
+Your contributions are always welcome :smile: ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first.
+
+Before working on an issue / feature, it is **crucial** that you're assigned the task on a GitHub issue.
+* If a relevant issue already exists, discuss on the issue and get yourself assigned on GitHub.
+* If no relevant issue exists, open a new issue and get it assigned to yourself on GitHub.
+Please proceed with a Pull Request only after you're assigned. It'd be a waste of your time as well as ours if you have not contacted us before hand when working on some feature / issue.
+
+If you are here for GirlScript's Summer of Code and wish to seek assistance, feel free to contact any of the mentors on [slack](https://girlscriptgssoc.slack.com/) - 
+[@kaustubhhiware](https://girlscriptgssoc.slack.com/messages/DB0B3GBEG/), [@techytushar](https://girlscriptgssoc.slack.com/messages/DBBGEQAPQ/),
+[@Anubhav](https://girlscriptgssoc.slack.com/messages/DBAK57AQ2/), [@fhackdroid](https://girlscriptgssoc.slack.com/messages/DBAK4TUP4/), [@Roopal](https://girlscriptgssoc.slack.com/messages/DB92S68SX).
+
+[↥ back to top](#table-of-contents)
+
+## Features
+
+(Click to expand)
+
+### Your friends
+
+Plot the friends you make every day (blue), and the friends so far (orange).
+
+ ![](images/friends-cumulative.png)
+
+<details>
+<summary>Plot exclusively the friends you make each day.</summary>
+
+ ![](images/friends-each.png)
+</details>
+
+<details>
+<summary>Plot messages as a function of month.</summary>
+
+ ![](images/friends-month.png)
+</details>
+
+[↥ back to top](#table-of-contents)
+
+
+### Your Messages
+
+The following is available for either a specific chat (person / group) or for all messages.
+
+Plot all messages so far, with new messages each hour.
+
+ ![](images/msgs-cumulative.png)
+
+<details>
+<summary>Plot only new messages each hour.</summary>
+
+ ![](images/msgs-each.png)
+</details>
+<details>
+<summary>Plot messages as a function of hour (0-24)</summary>
+
+ ![](images/msgs-hour.png)
+</details>
+<details>
+<summary>Plot messages as a function of month.</summary>
+
+ ![](images/msgs-month.png)
+</details>
+
+[↥ back to top](#table-of-contents)
+
+## Observations
+
+1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
+
+2. I tend to message less during exams (Feb, Apr, Sep, Nov).
+
+3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
+
+[↥ back to top](#table-of-contents)
 
 ## Why
 
@@ -119,11 +160,7 @@ Plus it was raining and I couldn't go to MS's Hall Day till after the rain stopp
 
 Have a feature request? See an interesting avenue not utilised yet with facebook's archive? Let me know by making a new issue.
 
-## ToDos
-
-- [ ] Plot number of messages with each friend as a function of time. Since this could get messy, plot only top 10-20 friends.
- This way I'll know who're really my friends and who just pretend to be.
-- [ ] Pick larger intervals to plot for clearer graphs, less shaky.
+[↥ back to top](#table-of-contents)
 
 ## License
 
