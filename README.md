@@ -32,8 +32,8 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
 1. Head on to [Facebook > Settings > General Settings > Your facebook information](https://www.facebook.com/settings?tab=your_facebook_informations).
 2. Select the JSON data format and click on download archive. It might take some time to prepare the archive, this might take upto 10-15 minutes. NOTE: The download might be in order of 100s MBs. Disable photo and video download options to save some bandwidth. (My archive was ~300MB).
 3. If possible, downlaod the same data in HTML format. It is much easier to browse through your archive and spot some interesting patterns in the HTML format, however this is not necessary. The JSON format will suffice for processing, refer [#2](https://github.com/kaustubhhiware/facebook-archive/issues/2).
-
  ![](images/archive-download.png)
+ 
 [↥ back to top](#table-of-contents)
 
 ## Usage
