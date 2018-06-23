@@ -6,6 +6,10 @@ so that I can [ACCOMPLISH THAT].
 ## Mocks
 [INSERT RELEVANT PNG FILE]
 
+## Steps to reproduce (Incase of a bug)
+- [ ] Step 1
+- [ ] Step 2
+
 ## Acceptance Criteria
 ### Update [Required]
 - [ ] [LIST ITEMS]
