@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+import datetime as dt
 
 def reactions():
     loc = input('Enter facebook archive extracted location: ')
@@ -71,6 +72,17 @@ def reactions():
     for friend in top_10:
         friend = re.sub('\'s', '', friend)
         print(friend)
-
+    
+    # Month Wise Distribution of Reactions
+    count_month = [0]*12
+    for ele in data:
+        timestamp = ele['timestamp']
+        month = dt.datetime.fromtimestamp(timestamp).month
+        count_month[month-1]+=1
+    plt.plot(count_month,linestyle="--", marker="^", color="g")
+    plt.ylabel("Frequency")
+    plt.xlabel("Month Number")
+    plt.show()
+    
 if __name__ == '__main__':
     reactions()
