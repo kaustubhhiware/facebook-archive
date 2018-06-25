@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re
 import datetime as dt
+from datetime import timedelta
+import timestring
 
 def reactions():
     loc = input('Enter facebook archive extracted location: ')
@@ -74,6 +76,7 @@ def reactions():
         print(friend)
     
     # Month Wise Distribution of Reactions
+    
     count_month = [0]*12
     for ele in data:
         timestamp = ele['timestamp']
@@ -82,6 +85,32 @@ def reactions():
     plt.plot(count_month,linestyle="--", marker="^", color="g")
     plt.ylabel("Frequency")
     plt.xlabel("Month Number")
+    plt.show()
+    
+    # Line plot for each reaction
+    
+    rxnList = ['LIKE', 'HAHA', 'WOW', 'LOVE', 'ANGER', 'SORRY']
+    for rxn in rxnList:
+        dataTemp = [item for item in data if item["data"][0]["reaction"]["reaction"]==rxn]
+        dates = [timestring.Date(i["timestamp"]).date for i in dataTemp]
+        dates.reverse()
+
+        firstdate = dates[0]    
+        maxdays = int((dates[-1] - firstdate).total_seconds() / 86400) + 1
+        reactionCount = [0]*int(maxdays)
+
+        for i in range(len(dates)):
+            days_diff = (dates[i] - firstdate).total_seconds() / 86400
+            reactionCount[int(days_diff)] += 1
+
+        xaxis = [ dt.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays) ]
+        cumulative_reactions = np.cumsum(reactionCount).tolist()
+
+        plt.plot(xaxis,cumulative_reactions,linewidth=3.0, label=rxn)
+    plt.legend(loc='upper left')
+    plt.title("Reactions on posts", fontsize=16, fontweight='bold')
+    plt.xlabel("Time")
+    plt.ylabel("Cumulative Sum of Reactions")
     plt.show()
     
 if __name__ == '__main__':
