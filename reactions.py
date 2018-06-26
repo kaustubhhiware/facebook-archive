@@ -54,14 +54,16 @@ def reactions():
     pattern2 = r"(?:to ).+\b"
     names = []
     for ele in data:
-        title = ele['title']
+        title = ele["title"]
         first_names = re.findall(pattern1, title)
         if len(first_names)>0:
-            names.append(first_names[0].split()[1] + " " + first_names[0].split()[2])
+            if len(first_names[0].split())>1:
+                names.append(first_names[0].split()[1] + " " + first_names[0].split()[2])
         else:
             first_names = re.findall(pattern2, title)
             if len(first_names)>0:
-                names.append(first_names[0].split()[1] + " " + first_names[0].split()[2])
+                if len(first_names[0].split())>1:
+                    names.append(first_names[0].split()[1] + " " + first_names[0].split()[2])
 
     name_counter = {}
     for name in names:
