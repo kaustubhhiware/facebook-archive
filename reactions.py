@@ -66,16 +66,33 @@ def reactions():
                     names.append(first_names[0].split()[1] + " " + first_names[0].split()[2])
 
     name_counter = {}
+    totalCnt=0
     for name in names:
         if name in name_counter:
             name_counter[name]+=1
         else:
             name_counter[name]=1
+        totalCnt+=1
+    #print(name_counter)
+    
     popular_names = sorted(name_counter,key = name_counter.get, reverse = True)
     top_10 = popular_names[:10]
+    top_10per = []
+    x_ticks = []
     for friend in top_10:
+        per = (name_counter[friend] / totalCnt) * 100
         friend = re.sub('\'s', '', friend)
-        print(friend)
+        top_10per.append(per)
+        x_ticks.append(friend)
+    
+    x = np.array([0,1,2,3,4,5,6,7,8,9])
+    y = np.array(top_10per)
+    #x_ticks = ['LIKE', 'HAHA', 'WOW', 'LOVE', 'ANGER', 'SORRY']
+    plt.xticks(x,x_ticks,rotation = 45)
+    plt.plot(x,y,linestyle='--',marker='o')
+    plt.ylabel('Percentage of Reactions')
+    plt.tight_layout()
+    plt.show()
     
     # Month Wise Distribution of Reactions
     
