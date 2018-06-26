@@ -148,7 +148,12 @@ Plot all messages so far, with new messages each hour.
 Plot count of different reactions to posts
 
  ![](images/reactions_plot2.png)
- 
+
+<details>
+<summary>Plot of 10 Friends whose posts you react to the most</summary>
+
+ ![](images/top10_friends.png)
+</details>
 <details>
 <summary>Plot reactions as a function of month.</summary>
 
