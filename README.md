@@ -142,6 +142,27 @@ Plot all messages so far, with new messages each hour.
 
 [↥ back to top](#table-of-contents)
 
+
+### Your reactions
+
+Plot count of different reactions to posts
+
+ ![](images/reactions_plot2.png)
+ 
+<details>
+<summary>Plot reactions as a function of month.</summary>
+
+ ![](images/reactions_monthwise.png)
+</details>
+<details>
+<summary>Plot cumulative count of different reactions on a single plot</summary>
+
+ ![](images/cumulative_rxns.png)
+</details>
+
+[↥ back to top](#table-of-contents)
+
+
 ## Observations
 
 1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
