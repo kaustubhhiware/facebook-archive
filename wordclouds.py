@@ -7,13 +7,14 @@ import nltk
 from nltk.stem import PorterStemmer
 from PIL import Image
 from nltk.tokenize import sent_tokenize, word_tokenize
+from langdetect import detect
 
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
-ps =PorterStemmer()
+ps = PorterStemmer()
 
 def wordcloud():
     loc = input('Enter facebook archive extracted location: ')
@@ -31,12 +32,20 @@ def wordcloud():
     
     final_text = ""
     final_comments = ""
+    languages = []
+    ctr=0
     if "comments" in base_data:
         data = base_data["comments"]
         
         for ele in data:
             if 'data' in ele:
                 ctext = ele["data"][0]["comment"]["comment"]
+                try:
+                    b = detect(ctext)
+                    #if b not in languages:
+                    languages.append(b)
+                except:
+                    ctr+=1
                 final_comments=final_comments + ' ' + ctext 
                 words = word_tokenize(ctext)
                 for w in words:
@@ -58,13 +67,25 @@ def wordcloud():
         for ele in data:
             if "data" in ele:
                 if "post" in ele["data"][0]:
+                    try:
+                        b = detect(ele["data"][0]["post"])
+                        #if b not in languages:
+                        languages.append(b)
+                    except:
+                        ctr+=1
                     words = word_tokenize(ele["data"][0]["post"])
                     for w in words:
                         final_text = final_text + ' ' + ps.stem(w)
-                        
+    
+    print("Your Most Common Language: ")
+    if max(languages,key=languages.count) =='en':
+        print('English')
+    else:
+        print(max(languages,key=languages.count))
+        
     if final_text != "":
-        mask = np.array(Image.open("images/mymask.png"))
-        wordcloud = WordCloud(collocations=False, mask = mask, max_font_size=300, relative_scaling = 1.0,
+        mask = np.array(Image.open("mymask.png"))
+        wordcloud = WordCloud(background_color = "white", collocations=False, mask = mask, max_font_size=300, relative_scaling = 1.0,
                           stopwords = set(STOPWORDS)
                           ).generate(final_text)
         image_colors = ImageColorGenerator(mask)
@@ -82,15 +103,17 @@ def wordcloud():
     flist = []
     fname = loc+'/friends/friends.json'
     if not os.path.isfile(fname):
-        print("The file your_posts.json is not present at the entered location.")
+        print("The file friends.json is not present at the entered location.")
         exit(1)
     with open(fname) as f:
         base_data = json.load(f)
     base_data = base_data["friends"]
     for ele in base_data:
         fwords = word_tokenize(ele["name"])
-        for fw in fwords:
-            flist.append(fw)
+        if fwords[0]!="Md" and fwords[0]!="Kumar":
+            flist.append(fwords[0])
+        else:
+            flist.append(fwords[1])
             
     if final_comments!="":
         friend_names = ""
