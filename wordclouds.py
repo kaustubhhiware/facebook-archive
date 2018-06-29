@@ -84,7 +84,7 @@ def wordcloud():
         print(max(languages,key=languages.count))
         
     if final_text != "":
-        mask = np.array(Image.open("mymask.png"))
+        mask = np.array(Image.open("images/mymask.png"))
         wordcloud = WordCloud(background_color = "white", collocations=False, mask = mask, max_font_size=300, relative_scaling = 1.0,
                           stopwords = set(STOPWORDS)
                           ).generate(final_text)
