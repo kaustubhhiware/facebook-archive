@@ -113,26 +113,26 @@ def friends():
     legend = ax.legend(loc='upper left')
     plt.title('Monthwise')
     plt.show()
-    percentage_recieved_friend = [0]*13
+    percentage_received_friend = [0]*13
     percentage_send_friend_request = [0]*13
 
     for i in range(13):
         if rmonthwise[i]==0:
-            percentage_recieved_friend[i]=0
+            percentage_received_friend[i]=0
             percentage_send_friend_request[i] = 100
         else:
 
-            percentage_recieved_friend[i] = (rmonthwise[i]/(rmonthwise[i]+smonthwise[i]))*100
-            percentage_send_friend_request[i] = 100-(percentage_recieved_friend[i])
+            percentage_received_friend[i] = (rmonthwise[i]/(rmonthwise[i]+smonthwise[i]))*100
+            percentage_send_friend_request[i] = 100-(percentage_received_friend[i])
 
 
     #print(percentage_recieved_friend)
     xind = np.arange(13)
     width = 0.35
     print('Plotting percentage of send and received friends request')
-    p1 = plt.bar(xind, percentage_recieved_friend, width)#received_freind_request
+    p1 = plt.bar(xind, percentage_received_friend, width)#received_freind_request
     p2 = plt.bar(xind, percentage_send_friend_request, width,
-                 bottom=percentage_recieved_friend)
+                 bottom=percentage_received_friend)
 
     plt.ylabel('Total Friends Request Send Or received')
     plt.title('Facebook Friends')
