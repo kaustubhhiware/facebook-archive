@@ -142,8 +142,10 @@ Plot all messages so far, with new messages each hour.
 </details>
 
 [↥ back to top](#table-of-contents)
-### Friend Request
 
+## Observations
+
+### Friend Request
 Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
 
 ![](images/FriendEachDay.png)
@@ -165,8 +167,7 @@ Plot the cumalative friend you may every month,friend request send and friend re
  <details>
   <summary>We compare monthwise no.of friend request send vs friend request received</summary>
   </details>
- 
-## Observations
+
 
 1. In the first month I haven't received any friend request.
 
