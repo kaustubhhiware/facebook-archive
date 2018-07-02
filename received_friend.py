@@ -63,7 +63,6 @@ def friends():
     xaxis = [ datetime.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays) ]
     cumulative_friends = np.cumsum(frndcount).tolist()
 
-
     for i in range(len(rdates)):
         rdays_diff = (rdates[i] - rfirstdate).total_seconds() / 86400
         rfrndcount[int(rdays_diff)] += 1
@@ -102,7 +101,6 @@ def friends():
             percentage_received_friend[i]=0
             percentage_send_friend_request[i] = 100
         else:
-
             percentage_received_friend[i] = (rmonthwise[i]/(rmonthwise[i]+smonthwise[i]))*100
             percentage_send_friend_request[i] = 100-(percentage_received_friend[i])
 
@@ -119,13 +117,6 @@ def friends():
     plt.legend((p1[0], p2[0]), ('Received Friend Request', 'Sent Friend Request'))
 
     plt.show()
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     friends()
