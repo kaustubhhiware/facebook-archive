@@ -95,6 +95,7 @@ If you are here for GirlScript's Summer of Code and wish to seek assistance, fee
 
 (Click to expand)
 
+
 ### Your friends
 
 Plot the friends you make every day (blue), and the friends so far (orange).
@@ -142,7 +143,35 @@ Plot all messages so far, with new messages each hour.
 
 [↥ back to top](#table-of-contents)
 
+## Observations
 
+### Friend Request
+Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
+
+![](images/FriendEachDay.png)
+
+<details>
+  <summary>Plot all the friend request received,send and total friend so far.</summary>
+  </details>
+  
+Plot the cumalative friend you may every month,friend request send and friend request received.
+![](images/MonthwiseFriend.png)
+
+<details>
+  <summary>Plot the no.of friend request received,friend request send and total friend each month</summary>
+ </details>
+ 
+ Compare the Friend request recieved received and friend request send.
+ ![](images/ComparingFriendRequestReceivedorSend.png)
+ 
+ <details>
+  <summary>We compare monthwise no.of friend request send vs friend request received</summary>
+  </details>
+
+
+1. In the first month I haven't received any friend request.
+
+2. I tend to receive more friend request in the month of july,august(new juniors)
 ### Your reactions
 
 Plot count of different reactions to posts
