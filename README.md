@@ -170,11 +170,38 @@ Plot count of different reactions to posts
 
 ## Observations
 
-1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
+### Friend Request
+Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
 
-2. I tend to message less during exams (Feb, Apr, Sep, Nov).
+![](images/FriendEachDay.png)
 
-3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
+<details>
+  <summary>Plot all the friend request received,send and total friend so far.</summary>
+  </details>
+  
+Plot the cumalative friend you may every month,friend request send and friend request received.
+![](images/MonthwiseFriend.png)
+
+<details>
+  <summary>Plot the no.of friend request received,friend request send and total friend each month</summary>
+ </details>
+ 
+ Compare the Friend request recieved received and friend request send.
+![](images/ComparingFriendRequestReceivedorSend.png)
+ 
+ <details>
+  <summary>We compare monthwise no.of friend request send vs friend request received</summary>
+  </details>
+
+1. In the first month I haven't received any friend request.
+ 	 
+2. I tend to receive more friend request in the month of july,august(new juniors)
+
+3. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
+
+4. I tend to message less during exams (Feb, Apr, Sep, Nov).
+
+5. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
 
 [↥ back to top](#table-of-contents)
 
