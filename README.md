@@ -193,16 +193,15 @@ Plot count of different reactions to posts
 ## Observations
 
 
+1. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
 
-1. In the first month I haven't received any friend request.
+2. I tend to message less during exams (Feb, Apr, Sep, Nov).
+
+3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
+
+4. In the first month I haven't received any friend request.
  	 
-2. I tend to receive more friend request in the month of july,august(new juniors)
-
-3. There is a spike in friends made in March (Election season) and July (new juniors, much higher spike).
-
-4. I tend to message less during exams (Feb, Apr, Sep, Nov).
-
-5. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
+5. I tend to receive more friend request in the month of july,august(new juniors)
 
 [↥ back to top](#table-of-contents)
 
