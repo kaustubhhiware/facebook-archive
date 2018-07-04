@@ -151,11 +151,11 @@ Plot the friends you make every day(Red) ,friend request send every day(green) a
   <summary>Plot all the friend request received,send and total friend so far.</summary>
   </details>
   
-Plot the cumalative friend you may every month,friend request send and friend request received.
+Plot the cumulative friend you may every month,friend request send and friend request received.
 ![](images/MonthwiseFriend.png)
 
 <details>
-  <summary>Plot the no.of friend request received,friend request send and total friend each month</summary>
+  <summary>Plot the number of friend request received,friend request send and total friend each month</summary>
  </details>
  
  Compare the Friend request recieved received and friend request send.
