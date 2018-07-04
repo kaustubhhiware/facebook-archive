@@ -8,15 +8,26 @@ from nltk.stem import PorterStemmer
 from PIL import Image
 from nltk.tokenize import sent_tokenize, word_tokenize
 from langdetect import detect
+import langdetect as ld
 
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
-ps = PorterStemmer()
+PS = PorterStemmer()
+MASK_LOC = "images/mymask.png"
+LD_EXC = ld.lang_detect_exception.LangDetectException
 
 def wordcloud():
+    """
+    Analysing users' posts,comments and friends data.
+    
+    Generate wordclouds of commonly used words from users' posts and comments
+    Find out the most used language in posts and comments
+    Generate wordcloud of friends' names, most tagged in your posts
+    """
+    
     loc = input('Enter facebook archive extracted location: ')
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
@@ -30,10 +41,11 @@ def wordcloud():
     with open(fname) as f:
         base_data = json.load(f)
     
-    final_text = ""
-    final_comments = ""
+    final_text = None
+    final_comments = None
     languages = []
     ctr=0
+    
     if "comments" in base_data:
         data = base_data["comments"]
         
@@ -42,14 +54,20 @@ def wordcloud():
                 ctext = ele["data"][0]["comment"]["comment"]
                 try:
                     b = detect(ctext)
-                    #if b not in languages:
-                    languages.append(b)
-                except:
+                    if b not in languages:
+                        languages.append(b)
+                except LD_EXC:
                     ctr+=1
-                final_comments=final_comments + ' ' + ctext 
+                if final_comments is None:
+                    final_comments ="" + ctext
+                else:
+                    final_comments = final_comments + " " + ctext
                 words = word_tokenize(ctext)
                 for w in words:
-                    final_text = final_text + " " + ps.stem(w)
+                    if final_text is None:
+                        final_text ="" + PS.stem(w)
+                    else:
+                        final_text = final_text + " " + PS.stem(w)
     else:
         print("No Comments found in data")
     
@@ -71,20 +89,20 @@ def wordcloud():
                         b = detect(ele["data"][0]["post"])
                         #if b not in languages:
                         languages.append(b)
-                    except:
+                    except LD_EXC:
                         ctr+=1
                     words = word_tokenize(ele["data"][0]["post"])
                     for w in words:
-                        final_text = final_text + ' ' + ps.stem(w)
+                        if final_text is None:
+                            final_text ="" + PS.stem(w)
+                        else:
+                            final_text = final_text + " " + PS.stem(w)
     
     print("Your Most Common Language: ")
-    if max(languages,key=languages.count) =='en':
-        print('English')
-    else:
-        print(max(languages,key=languages.count))
+    print(max(languages,key=languages.count))
         
     if final_text != "":
-        mask = np.array(Image.open("images/mymask.png"))
+        mask = np.array(Image.open(MASK_LOC))
         wordcloud = WordCloud(background_color = "white", collocations=False, mask = mask, max_font_size=300, relative_scaling = 1.0,
                           stopwords = set(STOPWORDS)
                           ).generate(final_text)
