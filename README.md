@@ -152,7 +152,7 @@ Plot the friends you make every day(Red) ,friend request send every day(green) a
   </details>
  
  Compare the Friend request recieved received and friend request send.
-![](images/ComparingMonthwise.png)
+![](images/ComparingMonthWise.png)
  
  <details>
   <summary>We compare monthwise no.of friend request send vs friend request received</summary>
