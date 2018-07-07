@@ -150,16 +150,9 @@ Plot the friends you make every day(Red) ,friend request send every day(green) a
 <details>
   <summary>Plot all the friend request received,send and total friend so far.</summary>
   </details>
-  
-Plot the cumulative friend you may every month,friend request send and friend request received.
-![](images/MonthwiseFriend.png)
-
-<details>
-  <summary>Plot the number of friend request received,friend request send and total friend each month</summary>
- </details>
  
  Compare the Friend request recieved received and friend request send.
-![](images/ComparingFriendRequestReceivedorSend.png)
+![](images/ComparingMonthwise.png)
  
  <details>
   <summary>We compare monthwise no.of friend request send vs friend request received</summary>
@@ -199,7 +192,7 @@ Plot count of different reactions to posts
 
 3. Highest number of messages sent at 9 and 11 pm, confirming with calls from home come at 10pm. Almost no messages shared between 3am-7am.
 
-4. In the first month I haven't received any friend request.
+4. I used to send more friend request as compared to friend request received.
  	 
 5. I tend to receive more friend request in the month of july,august(new juniors)
 
