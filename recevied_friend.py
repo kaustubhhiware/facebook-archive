@@ -107,10 +107,10 @@ def friends():
     plt.show()
     l= min(len(rmonthwise),len(smonthwise))
     overall = [0]*l
-    percentage_recieved_friend = [0]*len(overall)
-    percentage_send_friend_request = [0]*len(overall)
+    percentage_recieved_friend = [0]*l
+    percentage_send_friend_request = [0]*l
 
-    for i in range(len(overall)):
+    for i in range(l):
         if rmonthwise[i]==0:
             percentage_recieved_friend[i]=0
             percentage_send_friend_request[i] = 100
