@@ -120,7 +120,7 @@ def friends():
             percentage_send_friend_request[i] = 100-(percentage_recieved_friend[i])
 
 
-    xind = np.arange(len(rmonthwise))
+    xind = np.arange(l)
     width = 0.8
     print('Plotting percentage of send and received friends request')
     p1 = plt.bar(xind, percentage_recieved_friend, width)#received_freind_request
