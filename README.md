@@ -182,6 +182,18 @@ Plot count of different reactions to posts
 
 [↥ back to top](#table-of-contents)
 
+### Your posts and comments
+
+Wordcloud of common words in your posts and comments
+
+ ![](images/wordcloud_comments.png)
+
+<details>
+<summary>Most tagged friends in your post</summary>
+
+ ![](images/wordcloud_tagged_friends.png)
+</details>
+
 
 ## Observations
 
