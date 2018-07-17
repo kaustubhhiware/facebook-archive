@@ -16,7 +16,7 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 PS = PorterStemmer()
-MASK_LOC = "images/mymask.png"
+MASK_LOC = "images/wordclouds/mymask.png"
 LD_EXC = ld.lang_detect_exception.LangDetectException
 
 def wordcloud():

@@ -15,17 +15,22 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
 
 ## Table of Contents
 
-* [Getting the data](#getting-the-data)
-* [Usage](#usage)
-  - [Friends](#friends)
-  - [Messages](#messages)
-* [Contributing](#contributing)
-* [Features](#features)
-  - [Your friends](#your-friends)
-  - [Your messages](#your-messages)
-* [Observations](#observations)
-* [Why](#why)
-* [License](#why)
+- [facebook-archive](#facebook-archive)
+  - [Table of Contents](#table-of-contents)
+  - [Getting the data](#getting-the-data)
+  - [Usage](#usage)
+    - [Friends](#friends)
+    - [Messages](#messages)
+  - [Contributing](#contributing)
+  - [Features](#features)
+    - [Your friends](#your-friends)
+    - [Your Messages](#your-messages)
+    - [Friend Request](#friend-request)
+    - [Your reactions](#your-reactions)
+    - [Your posts and comments](#your-posts-and-comments)
+  - [Observations](#observations)
+  - [Why](#why)
+  - [License](#license)
 
 ## Getting the data
 
@@ -99,18 +104,18 @@ If you are here for GirlScript's Summer of Code and wish to seek assistance, fee
 
 Plot the friends you make every day (blue), and the friends so far (orange).
 
- ![](images/friends-cumulative.png)
+ ![](images/plot_friends/friends-cumulative.png)
 
 <details>
 <summary>Plot exclusively the friends you make each day.</summary>
 
- ![](images/friends-each.png)
+ ![](images/plot_friends/friends-each.png)
 </details>
 
 <details>
 <summary>Plot messages as a function of month.</summary>
 
- ![](images/friends-month.png)
+ ![](images/plot_friends/friends-month.png)
 </details>
 
 [↥ back to top](#table-of-contents)
@@ -122,22 +127,22 @@ The following is available for either a specific chat (person / group) or for al
 
 Plot all messages so far, with new messages each hour.
 
- ![](images/msgs-cumulative.png)
+ ![](images/plot_messages/msgs-cumulative.png)
 
 <details>
 <summary>Plot only new messages each hour.</summary>
 
- ![](images/msgs-each.png)
+ ![](images/plot_messages/msgs-each.png)
 </details>
 <details>
 <summary>Plot messages as a function of hour (0-24)</summary>
 
- ![](images/msgs-hour.png)
+ ![](images/plot_messages/msgs-hour.png)
 </details>
 <details>
 <summary>Plot messages as a function of month.</summary>
 
- ![](images/msgs-month.png)
+ ![](images/plot_messages/msgs-month.png)
 </details>
 
 [↥ back to top](#table-of-contents)
@@ -145,39 +150,34 @@ Plot all messages so far, with new messages each hour.
 ### Friend Request
 Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
 
-![](images/FriendEachDay.png)
+![](images/received_friend/FriendEachDay.png)
 
-<details>
-  <summary>Plot all the friend request received,send and total friend so far.</summary>
-  </details>
- 
- Compare the Friend request recieved received and friend request send.
-![](images/Compare.png)
- 
  <details>
   <summary>We compare monthwise no.of friend request send vs friend request received</summary>
+
+  ![](images/received_friend/Compare.png)
   </details>
 
 ### Your reactions
 
 Plot count of different reactions to posts
 
- ![](images/reactions_plot2.png)
+ ![](images/reactions/reactions_plot2.png)
 
 <details>
 <summary>Plot of 10 Friends whose posts you react to the most</summary>
 
- ![](images/top10_friends.png)
+ ![](images/reactions/top10_friends.png)
 </details>
 <details>
 <summary>Plot reactions as a function of month.</summary>
 
- ![](images/reactions_monthwise.png)
+ ![](images/reactions/reactions_monthwise.png)
 </details>
 <details>
 <summary>Plot cumulative count of different reactions on a single plot</summary>
 
- ![](images/cumulative_rxns.png)
+ ![](images/reactions/cumulative_rxns.png)
 </details>
 
 [↥ back to top](#table-of-contents)
@@ -186,12 +186,12 @@ Plot count of different reactions to posts
 
 Wordcloud of common words in your posts and comments
 
- ![](images/wordcloud_comments.png)
+ ![](images/wordclouds/wordcloud_comments.png)
 
 <details>
 <summary>Most tagged friends in your post</summary>
 
- ![](images/wordcloud_tagged_friends.png)
+ ![](images/wordclouds/wordcloud_tagged_friends.png)
 </details>
 
 
