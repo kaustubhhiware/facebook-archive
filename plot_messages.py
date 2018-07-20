@@ -124,6 +124,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.msg is None:
         loc = input('Enter facebook archive extracted location: ')
+        loc = loc + "/messages"
     else:
         loc = args.msg
     if not os.path.isdir(loc):
