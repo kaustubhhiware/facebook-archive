@@ -37,6 +37,7 @@ Please proceed with a Pull Request only after you're assigned. It'd be a waste o
 # PR Checklist
 
 - [ ] When making a PR, add images / plots in the repository.
+- [ ] Make sure to add appropriate documentation wherever required; including a brief explanation of the script in comments, adding docstrings in functions, and using intuitive variable names. Refer [#16](https://github.com/kaustubhhiware/facebook-archive/issues/16) for details.
 - [ ] Link these images in the README in the Features section.
 - [ ] Post all the images of your script `abc.py` in `images/abc`.
 - [ ] If you have some things to work upon in the PR, please add `in-progress` label. Remove this label when you're ready for a review.
@@ -52,4 +53,3 @@ These are the things to note, irrespective of what issue you are working on.
 
 - [ ] Pick larger intervals to plot for clearer graphs, less shaky.
 - [ ] Make sure the scripts are compatible with the latest version of JSON data provided by facebook's archive - [#2](https://github.com/kaustubhhiware/facebook-archive/issues/2).
-- [ ] Document all functions, use docstrings, intuitive variable names - [#16](https://github.com/kaustubhhiware/facebook-archive/issues/16).
