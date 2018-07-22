@@ -26,6 +26,7 @@ Describe the tests you ran to verify your changes. Provide instructions or GIFs 
 ### Checklist:
 **Delete irrelevant options.**
 
+- [ ] I have ensured my PR satisfies the checklist mentioned in [CONTRIBUTING.md](CONTRIBUTING.md).
 - [ ] My PR follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code or materials
 - [ ] I have commented my code or provided relevant documentation, particularly in hard-to-understand areas
