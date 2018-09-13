@@ -125,24 +125,24 @@ Plot the friends you make every day (blue), and the friends so far (orange).
 
 The following is available for either a specific chat (person / group) or for all messages.
 
-Plot all messages so far, with new messages each hour.
+Plot all messages so far,
 
  ![](images/plot_messages/msgs-cumulative.png)
 
 <details>
-<summary>Plot only new messages each hour.</summary>
+<summary>Plot daily message frequency</summary>
 
- ![](images/plot_messages/msgs-each.png)
+ ![](images/messages-daily.png)
 </details>
 <details>
-<summary>Plot messages as a function of hour (0-24)</summary>
+<summary>Plot monthly message frequency</summary>
 
- ![](images/plot_messages/msgs-hour.png)
+ ![](images/messages-monthly.png)
 </details>
 <details>
-<summary>Plot messages as a function of month.</summary>
+<summary>Plot yearly message frequency</summary>
 
- ![](images/plot_messages/msgs-month.png)
+ ![](images/messages-yearly.png)
 </details>
 
 [↥ back to top](#table-of-contents)

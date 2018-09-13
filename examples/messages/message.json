@@ -1,0 +1,24 @@
+{
+    "messages": [
+      {
+        "sender_name": "Farhaan Bukhsh",
+        "timestamp": 1345519043,
+        "content": "Hi",
+        "type": "Generic"
+      },
+      {
+        "sender_name": "His friend",
+        "timestamp": 1339152382,
+        "content": "hi",
+        "type": "Generic"
+      }
+    ],
+    "title": "His friend",
+    "is_still_participant": true,
+    "status": "Pending",
+    "thread_type": "Regular",
+    "participants": [
+      "His Friend"
+    ],
+    "thread_path": "friend_43942ddb16"
+  }

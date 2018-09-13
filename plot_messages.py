@@ -1,106 +1,134 @@
-import matplotlib.pyplot as plt
+"""
+    This script does the analysis on the facebook data collected and analyzes the trends on how the 
+    messages are recieved by a person, this also has a visualization. You need to close one graph to see other
+    graph, download the messages data from facebook and give the absolute path of the script.
+
+    Command:
+        python messages_json_plot.py --msg ./messages
+    
+    Author:
+        Farhaan Bukhsh <farhaan@fedoraproject.org>
+        Anubhav Singh
+"""
+import pandas as pd
+import json
 import os
-import re
-from copy import deepcopy
-import timestring
 import datetime
-from datetime import timedelta
-import dateutil.parser
-import numpy as np
+import matplotlib.pyplot as plt
+import operator
 import argparse
 
-def loop_messages(loc):
 
-    osfiles = [f for f in os.listdir(loc+'/messages/') if os.path.isfile(loc+'/messages/'+f)]
-    with open('temp.html','w') as outfile:
-        for file in osfiles:
-            with open(loc + '/messages/' + file, 'r') as infile:
-                txt = infile.readlines()
-                txt = filter(None, txt)
-                outfile.writelines(txt)
-    messages(loc, loop=True, fname='temp.html')
+class FacebookMessageAnalyser:
+    """ This class is used to analyse and visualize facebook message data"""
 
+    def __init__(self):
+        self.conversations = []
+        self.all_messages = []
+        self.monthly_aggregate = None
+        self.yearly_aggregate = None
+        self.daily_aggregate = None
 
-def messages(loc, loop=False, toplot=True,m_id=-1, fname=''):
-    if not loop:    
-        m_id = raw_input("Enter id for friend: ")
-        m_id = int(m_id)
-        # m_id=511
-        fname = loc+'/messages/'+ str(m_id) + '.html'
+    def __call__(self, messages_dir):
+        self.conversations = self.get_all_conversation(messages_dir)
+        self.populate_all_messages(messages_dir)
+        self.create_manipulate_dataframes()
+        self.visualize_data(self.monthly_aggregate, "Number of Months",
+                            "Cummulative Messages", "Cummulative Monthly Messages", "Monthly Plot")
+        self.visualize_data(self.daily_aggregate, "Number of Days",
+                            "Cummulative Messages", "Cummulative Daily Messages", "Daily Plot")
+        self.visualize_data(self.yearly_aggregate, "Years", "Cummulative Messages",
+                            "Cummulative Yearly Messages", "Yearly Plot")
 
-    if not os.path.isfile(fname):
-        print("File nahi hai yeh "+fname)
-        print(1)
+    def get_all_conversation(self, messages_dir):
+        """
+            :params message_dir: The location of the directory
+            :returns: a list of all the directory i.e conversations
+            Returns a list of all the converstaion that has taken place.
+        """
+        conversations = []
+        dirs = [convo for convo in os.listdir(
+            messages_dir) if os.path.isdir(messages_dir+"/"+convo) == True]
+        # Sanitary check to see if there is a message.json file present
+        for d in dirs:
+            files = [x for x in os.listdir(
+                messages_dir+"/"+d) if os.path.isfile(messages_dir+"/"+d+"/"+x) == True]
+            try:
+                if files[0] == "message.json":
+                    conversations.append(d)
+            except:
+                pass
+        return conversations
 
-    with open(fname, 'r') as f:
-        txt = f.readlines()
-    txt = ''.join(txt)
-    metastart = [m.start() for m in re.finditer('<span class="meta">', txt)]
-    metaend = [m.start() for m in re.finditer('UTC', txt)]
+    def populate_all_messages(self, messages_dir):
+        """
+            :params message_dir: The location of the directory
+            Populate all the messages user has reciceved.
+        """
+        for convo in self.conversations:
+            f = messages_dir + "/" + convo + "/" + "message.json"
+            with open(f) as msg_json_f:
+                msg_json = json.load(msg_json_f)
+                for msg in msg_json["messages"]:
+                    self.all_messages.append(msg)
 
-    if len(metaend) > len(metastart):
-        metaend = metaend[0:len(metastart)]
+    def create_manipulate_dataframes(self):
+        """
+            This method is used to get all the required columns
+            to the dataframe and store the appropriate aggregation in the
+            variables. 
+        """
+        msgdf = pd.DataFrame.from_dict(self.all_messages)
+        msgdf = msgdf[["timestamp", "sender_name"]]
+        msgdf["time"] = msgdf["timestamp"].apply(
+            lambda x: datetime.datetime.fromtimestamp(x))
+        msgdf["year"] = msgdf["time"].apply(lambda convo: convo.year)
+        msgdf["month"] = msgdf["time"].apply(
+            lambda convo: convo.month)
+        msgdf["day"] = msgdf["time"].apply(lambda convo: convo.day)
+        self.yearly_aggregate = msgdf["year"].value_counts()
+        self.monthly_aggregate = msgdf["month"].value_counts()
+        self.daily_aggregate = msgdf["day"].value_counts()
 
-    d = [txt[ metastart[i]+19 : metaend[i] ] for i in range(len(metastart)) ]
-    d = filter(None, d)
-    d2 = [dateutil.parser.parse(i) for i in d]
-    d2.reverse()
+    def cumulative_list(self, lists):
+        """
+            :params list: The list of values that has to be cummilated
+            :returns: The cummilated list
 
-    first = min(d2)
-    maxhours = int((max(d2) - first).total_seconds() / 3600) + 1
-    msgcount = [0] * int(maxhours)
-    monthwise, hourwise = [0]*13, [0]*25
-    # count number of friends each day, cumulative
-    for i in range(len(d2)):
-        hours_diff = (d2[i] - first).total_seconds() / 3600
-        msgcount[int(hours_diff)] += 1
-        monthwise[d2[i].month] += 1
-        hourwise[d2[i].hour] += 1
+            Turn the dicrete values into continuous value
+        """
+        cu_list = []
+        length = len(lists)
+        cu_list = [sum(lists[0:convo + 1]) for convo in range(0, length)]
+        return cu_list
 
-    xaxis = [ datetime.datetime.now() - timedelta(hours=maxhours-i) for i in range(maxhours)  ]
-    cumulative_msgs = np.cumsum(msgcount).tolist()
-
-    
-    if toplot:
-        print('Plotting new messages per hour and cumulative messages')
-        fig, ax = plt.subplots()
-        ax2 = ax.twinx()
-        ax.plot(xaxis, msgcount, color='C0', label='New each hour')
-        ax.set_ylabel('New each hour')
-
-        ax2.plot(xaxis, cumulative_msgs, color='C1', label='Messages so far')
-        ax2.set_ylabel('Messages so far')
-        plt.legend(loc='upper left', ncol=2)
+    def visualize_data(self, visualize_points, xlable, ylable, title, msg):
+        """
+            Create visualization for the given points and show the lables
+        """
+        print(msg)
+        x_axis = visualize_points.index.tolist()[::-1]
+        y_axis = visualize_points.tolist()[::-1]
+        y_axis = self.cumulative_list(y_axis)
+        x, y = zip(*sorted(zip(x_axis, y_axis), key=operator.itemgetter(0)))
+        plt.xlabel(xlable)
+        plt.ylabel(ylable)
+        plt.title(title)
+        plt.plot(x, y)
         plt.show()
 
-        print('Plotting only new messages per hour')
-        plt.plot(xaxis, msgcount, label='New each hour')
-        plt.legend(loc='upper left', ncol=2)
-        plt.show()
 
-        print('Plotting monthwise messages')
-        plt.plot(range(13), monthwise, label='per month')
-        plt.legend(loc='upper left', ncol=2)
-        plt.show()
-
-        print('Plotting only new messages per hour')
-        plt.plot(range(25), hourwise, label='New each hour')
-        plt.legend(loc='upper left', ncol=2)
-        plt.show()
-
-    return msgcount, cumulative_msgs, monthwise, hourwise
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', '--all', action='store_true', help="Display all users and groups messages")
+    parser.add_argument('--msg', help="Message directory location")
     args = parser.parse_args()
-
-    loc = raw_input('Enter facebook archive extracted location: ')
+    if args.msg is None:
+        loc = input('Enter facebook archive extracted location: ')
+        loc = loc + "/messages"
+    else:
+        loc = args.msg
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
-    if args.all:
-        loop_messages(loc)
-    else:
-        messages(loc)
+    facebook_analysis = FacebookMessageAnalyser()
+    facebook_analysis(loc)
