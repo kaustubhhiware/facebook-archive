@@ -79,9 +79,9 @@ class FacebookMessageAnalyser:
             variables. 
         """
         msgdf = pd.DataFrame.from_dict(self.all_messages)
-        msgdf = msgdf[["timestamp", "sender_name"]]
-        msgdf["time"] = msgdf["timestamp"].apply(
-            lambda x: datetime.datetime.fromtimestamp(x))
+        msgdf = msgdf[["timestamp_ms", "sender_name"]]
+        msgdf["time"] = msgdf["timestamp_ms"].apply(
+            lambda x: datetime.datetime.fromtimestamp(x/1000))
         msgdf["year"] = msgdf["time"].apply(lambda convo: convo.year)
         msgdf["month"] = msgdf["time"].apply(
             lambda convo: convo.month)
@@ -124,7 +124,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.msg is None:
         loc = input('Enter facebook archive extracted location: ')
-        loc = loc + "/messages"
+        # currently only focused on inbox
+        loc = loc + "/messages/inbox"
     else:
         loc = args.msg
     if not os.path.isdir(loc):

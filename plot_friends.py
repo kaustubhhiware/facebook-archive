@@ -7,6 +7,7 @@ import dateutil.parser
 import numpy as np
 import json
 from tabulate import tabulate
+import sys
 
 """
 Plot your friends along the way.
@@ -16,8 +17,9 @@ Author - @kaustubhhiware
 today = datetime.datetime.now().strftime('%b %d, %y')
 yesterday = (datetime.datetime.now() - timedelta(days=1)).strftime('%b %d, %y')
 
-def friends():
-    loc = raw_input('Enter facebook archive extracted location: ')
+def friends(loc=""):
+    if loc=="":
+        loc = input('Enter facebook archive extracted location: ')
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
@@ -79,4 +81,7 @@ def friends():
     print(tabulate(stats, headers=['Property', 'Value'], tablefmt='fancy_grid'))
     
 if __name__ == '__main__':
-    friends()
+    loc = ""
+    if len(sys.argv) > 1:
+        loc = sys.argv[1]
+    friends(loc)

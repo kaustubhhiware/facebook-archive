@@ -13,6 +13,9 @@
 
 In light of the recent facebook's data breach, Mark Zuckerberg made all the data available for each user via Facebook. You're going to need to download it, we'll get to it shortly. There are some things that would take a lot of time (too costly API calls) online, but can be easily done on archived data.
 
+Note to KWoC contributors: All issues are available for KWoC, feel free to work on any issue after being assigned.
+
+
 ## Table of Contents
 
 - [facebook-archive](#facebook-archive)
