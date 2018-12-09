@@ -124,15 +124,15 @@ if __name__ == '__main__':
         print('invalid --from --to range')
         exit(1)
 
-    print(from_date, to_date)
     loc = args.archive_path
     if loc is None:
         loc = input('Enter facebook archive extracted location: ')
+    loc = os.path.abspath(loc)
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
 
-    fname = loc+'/friends/friends.json'
+    fname = os.path.join(loc, 'friends/friends.json')
     if not os.path.isfile(fname):
         print("The file friends.json is not present at the entered location.")
         exit(1)
