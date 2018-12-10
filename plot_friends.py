@@ -22,6 +22,10 @@ def plot_friends_by_date(friend_list):
     Arguments:
     - friend_list: a list of friend objects
     """
+    if len(friend_list) == 0:
+        print('No friends according to filters.')
+        return
+
     dates = [timestring.Date(f['timestamp']).date for f in friends_list]
     dates.reverse()
 
@@ -142,6 +146,10 @@ if __name__ == '__main__':
 
     data = json.loads(friends_json_str)
     friends_list = data['friends']
+
+    if len(friend_list) == 0:
+        print('You have 0 friends. No plots for you')
+        exit(0)
 
     friends_list = date_filter(friends_list, from_date, to_date)
     plot_friends_by_date(friends_list)

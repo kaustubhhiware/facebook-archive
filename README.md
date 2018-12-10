@@ -3,7 +3,7 @@
 
 [![Chat at Slack](https://img.shields.io/badge/chat%20on%20-Slack-brightgreen.svg?style=for-the-badge)](https://girlscriptgssoc.slack.com/messages/CB4V6N62H/details/)
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php) ![Python](https://img.shields.io/badge/python-2.7-blue.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php) ![Python](https://img.shields.io/badge/python-3.6-blue.svg)
 
 
 ![GitHub open pull requests](https://img.shields.io/github/issues-pr/kaustubhhiware/facebook-archive.svg) 
