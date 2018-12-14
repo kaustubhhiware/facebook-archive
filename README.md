@@ -51,6 +51,13 @@ Install requirements with `pip install -r requirements.txt`
 ### Friends
 
 ```
+python plot_friends.py [path] [--from date] [--to date]
+```
+* `path` is the path to the facebook data archive
+* `--from date` specify the beginning of the plot
+* `--to date` specify the end of the plot
+* `date` string is in format __YYYY-MM-DD__
+```
 > python plot_friends.py
 Enter facebook archive extracted location: <location of extracted data folder,  e.g.: "facebook-kaustubhhiware">
 ```

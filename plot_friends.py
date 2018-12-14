@@ -16,13 +16,13 @@ Author - @kaustubhhiware
 """
 
 
-def plot_friends_by_date(friend_list):
+def plot_friends_by_date(friends_list):
     """plot_friends_by_date plots graphs with given friends data
 
     Arguments:
     - friend_list: a list of friend objects
     """
-    if len(friend_list) == 0:
+    if len(friends_list) == 0:
         print('No friends according to filters.')
         return
 
@@ -30,7 +30,8 @@ def plot_friends_by_date(friend_list):
     dates.reverse()
 
     firstdate = dates[0]
-    maxdays = int((dates[-1] - firstdate).total_seconds() / 86400) + 1
+    lastdate = dates[-1]
+    maxdays = int((lastdate - firstdate).total_seconds() / 86400) + 1
     frndcount = [0] * int(maxdays)
     monthwise = [0]*13
     # count number of friends each day, cumulative
@@ -39,7 +40,7 @@ def plot_friends_by_date(friend_list):
         frndcount[int(days_diff)] += 1
         monthwise[dates[i].month] += 1
 
-    xaxis = [ datetime.datetime.now() - timedelta(days=maxdays-i) for i in range(maxdays) ]
+    xaxis = [lastdate - timedelta(days=i) for i in range(maxdays, 0, -1)]
     cumulative_friends = np.cumsum(frndcount).tolist()
 
     print('Plotting new friends per day and cumulative friends')
@@ -74,8 +75,8 @@ def plot_friends_by_date(friend_list):
 
 
 def date_filter(friends, from_date, to_date):
-    """ date_filter creates an array of date when friend is added
-    if the friend is added between from_date and to_date
+    """ date_filter creates a list of friend objects
+    which the friends are added between from_date and to_date
 
     Arguments:
     friends: a list of friend objects
@@ -147,7 +148,7 @@ if __name__ == '__main__':
     data = json.loads(friends_json_str)
     friends_list = data['friends']
 
-    if len(friend_list) == 0:
+    if len(friends_list) == 0:
         print('You have 0 friends. No plots for you')
         exit(0)
 
