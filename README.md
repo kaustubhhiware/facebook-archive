@@ -67,7 +67,7 @@ Enter facebook archive extracted location: ./examples
 
 * Plot messages across all conversations.
  ```
- > python plot_messages.py -a
+ > python plot_messages.py
  Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware" 
  ```
 
