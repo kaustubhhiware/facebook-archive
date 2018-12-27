@@ -154,10 +154,11 @@ Find the top ten friends whom you message and plot each friends no. of messages 
 https://github.com/hadesanirban/facebook-archive/tree/master/images/Top_10_Friends_whom_I_message
 * Plot Top_ten_Friends.
  ```
- > python plot Top_ten_Friends.py
+ > python plot Top_ten_Friends.py --num_friends 7 (for example)
  enter your official facebook name: "your name as in facebook i.e. Anirban Panda"
  Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware"
- ``` 
+ ```
+ Also added a new command line argument named num_friends which helps you to plot as many friends as you want but default value is set to 10.
 
 ### Friend Request
 Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
