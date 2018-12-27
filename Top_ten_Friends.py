@@ -22,8 +22,9 @@ class dd_list(dict):
 
 class FriendsIMessage(dd_list):
     
-    def __init__(self,name):
+    def __init__(self,name,num_friends):
         self.name=name
+        self.num_friends=num_friends
         self.conversations=[]
         self.who_i_message_counts=dict()
         self.who_i_message=dd_list()
@@ -41,9 +42,9 @@ class FriendsIMessage(dd_list):
         self.populate_all_messages(messages_dir)
         self.create_manipulate_dataframes_plot()
         self.visualize_data(self.daily_aggregate,"day","cumulative_daily_messages","top_ten_friends_who_i_message")
-        self.dataframe_show(self.top_ten_counts)
+        self.dataframe_show(self.top_ten_counts,"NO._OF_MESSAGES_SENT")
         self.visualize_data(self.daily_aggregate_i,"day","cumulative_daily_messages","top_ten_friends_who_message_me")
-        self.dataframe_show(self.top_ten_i_counts)
+        self.dataframe_show(self.top_ten_i_counts,"NO._OF_MESSAGES_RECEIVED")
         
     def get_all_conversations(self,messages_dir):
         """
@@ -108,7 +109,7 @@ class FriendsIMessage(dd_list):
         flag_i=0
         for x,y in sv:
             
-            if flag==10:
+            if flag==self.num_friends:
                 break
             else:
                 self.top_ten[x]=self.who_i_message[x]
@@ -116,7 +117,7 @@ class FriendsIMessage(dd_list):
             flag=flag+1       
         for x,y in sv_i:
             
-            if flag_i==10:
+            if flag_i==self.num_friends:
                 break
             else:
                 self.top_ten_i[x]=self.who_message_me[x]
@@ -156,13 +157,13 @@ class FriendsIMessage(dd_list):
             self.daily_aggregate_i[x].append(msgdf_i["day"].value_counts())
             
             
-    def dataframe_show(self,tabular):
+    def dataframe_show(self,tabular,address):
         '''
            shows the dataframe containing no. of messages per friend
         '''
         keys=[x for x in tabular.keys()]
         values=[x for x in tabular.values()]
-        df=pd.DataFrame({'NAME':keys,'NO._OF_MESSAGES':values})
+        df=pd.DataFrame({'NAME':keys,address:values})
         print(df)
 
 
@@ -201,7 +202,7 @@ class FriendsIMessage(dd_list):
         
         fig=plt.figure(figsize=(20,10))
         ax=fig.add_subplot(111)
-        for x in range(0,10):
+        for x in range(0,self.num_friends):
             ax.plot(stacklist_x[x],stacklist_y[x],zorder=1,label=stacklist_labels[x])
             ax.scatter(stacklist_x[x],stacklist_y[x],zorder=2)
         plt.legend(loc="upper left")
@@ -215,22 +216,26 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--msg', help="Message directory location")
     parser.add_argument('--name',help="your facebook name")
+    parser.add_argument('--num_friends',help="no. of friends you want to plot")
     args = parser.parse_args()
     if args.name is None:
         name=input('enter your official facebook name: ')
     else:
         name=args.name
+    if args.num_friends is None:
+        num_friends=10
+    else:
+        num_friends=int(args.num_friends)
     if args.msg is None:
         loc = input('Enter facebook archive extracted location: ')
         #currently only focused on inbox
         loc = loc + "/messages/inbox"
     else:
-        name=args.name
         loc = args.msg
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
-    top_10_friends = FriendsIMessage(name)
+    top_10_friends = FriendsIMessage(name,num_friends)
     top_10_friends(loc)
 
        
