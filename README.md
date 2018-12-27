@@ -149,9 +149,15 @@ Plot all messages so far,
 </details>
 
 [↥ back to top](#table-of-contents)
-### Top_10_friends_whom_I_message
+### Top_10_friends_whom_I_message and Top_10_friends_who_message_me
 Find the top ten friends whom you message and plot each friends no. of messages as a function of time
 https://github.com/hadesanirban/facebook-archive/tree/master/images/Top_10_Friends_whom_I_message
+* Plot Top_ten_Friends.
+ ```
+ > python plot Top_ten_Friends.py
+ enter your official facebook name: "your name as in facebook i.e. Anirban Panda"
+ Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware"
+ ``` 
 
 ### Friend Request
 Plot the friends you make every day(Red) ,friend request send every day(green) and friend request received every day(blue)
