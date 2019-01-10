@@ -148,5 +148,5 @@ def plot_on_map(locations):
     
 if __name__ == '__main__':
     
-    differet_locations = diff_location()
-    plot_on_map(differet_locations)
+    different_locations = diff_location()
+    plot_on_map(different_locations)
