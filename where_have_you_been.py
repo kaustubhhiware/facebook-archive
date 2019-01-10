@@ -12,21 +12,26 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 
 """
-Location heatmap
+Location history
 Author - @animesh-chouhan
 """
 
 today = datetime.datetime.now().strftime('%b %d, %y')
 yesterday = (datetime.datetime.now() - timedelta(days=1)).strftime('%b %d, %y')
 
-def location():
+def diff_location():
+    """
+        :params none
+        Returns the non-repeated address co-ordinates
+    """
     loc = raw_input('Enter facebook archive extracted location: ')
-    
+
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
     
     fname = loc+'/location_history/your_location_history.json'
+    fname = "your_location_history.json"
     if not os.path.isfile(fname):
         print("The file your_location_history.json is not present at the entered location.")
         exit(1)
@@ -36,7 +41,6 @@ def location():
     
     raw_data = json.loads(txt)
     usable_data = raw_data["location_history"]
-    
     locations = list()
 
     for i in usable_data:
@@ -49,7 +53,7 @@ def location():
                 curr_loc = (lat, long)
                 locations.append(curr_loc)
     
-#     print(locations[0:10])
+
     diff_loc = list()
     diff_loc.append(locations[0])
 
@@ -63,19 +67,31 @@ def location():
                 
         if flag==True: 
             diff_loc.append(i)
-            
-#     print(diff_loc)       
+        else :
+            pass
+    
+    return diff_loc       
+      
 
     
+def coord2address(locations):    
+    """
+        :params locations: The locations whose address is to be found
+        Prints the address corresponding to the coordinates passed.
+    """
     geolocator = Nominatim(user_agent="location-finder" )
-    for i in diff_loc[:0]:
+    for i in locations:
         coordinate = "{0}, {1}".format(i[0], i[1])
         location = geolocator.reverse(coordinate)
         print(location.address, "\n")
         
        
     
-    
+def plot_on_map(locations):    
+    """
+        :params locations: The locations which have to be plotted
+        Plots the point passed
+    """    
     mapbox_access_token = 'pk.eyJ1IjoiYW5pbWVzaHNpbmdoIiwiYSI6ImNqcGM1MHpyeDJ0eHgzcXBoZDNrd3dyNnIifQ.N32_UbaPj_KSHkuIJfl33w'
 
     lat1 = list()
@@ -83,20 +99,15 @@ def location():
     lat_sum = 0
     long_sum = 0
 
-    for i in diff_loc:
+    for i in locations:
         lat1.append(str(i[0]))
         long1.append(str(i[1]))
 
         lat_sum += i[0]
         long_sum += i[1]
 
-    avg_lat = (lat_sum/len(diff_loc))
-    avg_long = (long_sum/len(diff_loc))
-
-#     print(lat1)
-#     print(long1)
-#     print(avg_lat)
-#     print(avg_long)
+    avg_lat = (lat_sum/len(locations))
+    avg_long = (long_sum/len(locations))
 
     data = [
         go.Scattermapbox(
@@ -126,11 +137,16 @@ def location():
     )
 
     fig = dict(data=data, layout=layout)
-    py.iplot(fig, filename='Montreal Mapbox')
+    name = input('Enter your name: ')
+    file = 'Location History-' + name
+    print("View your plot in your browser at https://plot.ly/~animeshsingh38/ where it is named ",file)
+    py.iplot(fig, filename=file)
 
     
                     
                 
     
 if __name__ == '__main__':
-    location()
+    
+    differet_locations = diff_location()
+    plot_on_map(differet_locations)
