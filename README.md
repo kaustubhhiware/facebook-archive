@@ -21,6 +21,7 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
   - [Usage](#usage)
     - [Friends](#friends)
     - [Messages](#messages)
+    - [Locations](#locations)
   - [Contributing](#contributing)
   - [Features](#features)
     - [Your friends](#your-friends)
@@ -28,6 +29,7 @@ In light of the recent facebook's data breach, Mark Zuckerberg made all the data
     - [Friend Request](#friend-request)
     - [Your reactions](#your-reactions)
     - [Your posts and comments](#your-posts-and-comments)
+    - [Your locations](#your-locations)
   - [Observations](#observations)
   - [Why](#why)
   - [License](#license)
@@ -80,6 +82,17 @@ What's this id?
 2. Click messages. Search for the person / conversation you want to analyse.
 3. Clicking on that chat should open a url like ; 'file:///home/kaustubh/GitHub/facebook-kaustubhhiware/messages/511.html'. For this particular chat, 511 is the id for this particular conversation.
 [↥ back to top](#table-of-contents)
+
+### Locations
+
+**Will be updated soon**
+
+* Plot your location history.
+ ```
+ > python where_have_you_been.py 
+ Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware" 
+ ```
+ [↥ back to top](#table-of-contents)
 
 ## Contributing
 
@@ -193,6 +206,15 @@ Wordcloud of common words in your posts and comments
 
  ![](images/wordclouds/wordcloud_tagged_friends.png)
 </details>
+
+### Your Locations
+
+Plot all locations so far,
+
+ ![](images/where_have_you_been/Location_history_640x480.png)
+
+[↥ back to top](#table-of-contents)
+
 
 
 ## Observations
