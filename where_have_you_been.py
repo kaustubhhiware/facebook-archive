@@ -24,16 +24,16 @@ def diff_location():
         :params none
         Returns the non-repeated address co-ordinates
     """
-    loc = raw_input('Enter facebook archive extracted location: ')
+    loc = input('Enter facebook archive extracted location: ')
 
     if not os.path.isdir(loc):
         print("The provided location doesn't seem to be right")
         exit(1)
     
-    fname = loc+'/location_history/your_location_history.json'
-    fname = "your_location_history.json"
+    fname = loc+'/location/location_history.json'
+    # fname = "location_history.json"
     if not os.path.isfile(fname):
-        print("The file your_location_history.json is not present at the entered location.")
+        print("The file location_history.json is not present at the entered location.")
         exit(1)
 
     with open(fname, 'r') as f:

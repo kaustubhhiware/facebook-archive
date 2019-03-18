@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tabulate import tabulate
 import timestring
+import math
 
 prog_desc = """
 Plot your friends along the way.
@@ -16,7 +17,7 @@ Author - @kaustubhhiware
 """
 
 
-def plot_friends_by_date(friends_list):
+def plot_friends_by_date(friends_list, weekwise = True):
     """plot_friends_by_date plots graphs with given friends data
 
     Arguments:
@@ -33,14 +34,20 @@ def plot_friends_by_date(friends_list):
     lastdate = dates[-1]
     maxdays = int((lastdate - firstdate).total_seconds() / 86400) + 1
     frndcount = [0] * int(maxdays)
+    if weekwise:
+        frndcount = [0]* math.ceil(maxdays / 7)
     monthwise = [0]*13
     # count number of friends each day, cumulative
     for i in range(len(dates)):
         days_diff = (dates[i] - firstdate).total_seconds() / 86400
+        if weekwise:
+            days_diff /= 7
         frndcount[int(days_diff)] += 1
         monthwise[dates[i].month] += 1
 
     xaxis = [lastdate - timedelta(days=i) for i in range(maxdays, 0, -1)]
+    if weekwise:
+        xaxis = xaxis[::7]
     cumulative_friends = np.cumsum(frndcount).tolist()
 
     print('Plotting new friends per day and cumulative friends')
@@ -55,7 +62,7 @@ def plot_friends_by_date(friends_list):
     plt.show()
 
     print('Plotting only new friends per day')
-    plt.plot(xaxis, frndcount, label='New each day')
+    plt.bar(xaxis, frndcount, label='New friends made each week', width=5)
     plt.legend(loc='upper left', ncol=2)
     plt.show()
 
