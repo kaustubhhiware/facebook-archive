@@ -76,22 +76,9 @@ Enter facebook archive extracted location: ./examples
 
 * Plot messages across all conversations.
  ```
- > python plot_messages.py -a
+ > python plot_messages.py
  Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware" 
  ```
-
-* Plot messages for a single conversation.
- ```
- > python plot_messages.py
- Enter facebook archive extracted location: "location of extracted, downloaded zip: like facebook-kaustubhhiware"
- Enter id for friend: 511
- ```
-
-What's this id? 
-1. Open index.html in `facebook-yourfacebookusername`
-2. Click messages. Search for the person / conversation you want to analyse.
-3. Clicking on that chat should open a url like ; 'file:///home/kaustubh/GitHub/facebook-kaustubhhiware/messages/511.html'. For this particular chat, 511 is the id for this particular conversation.
-[↥ back to top](#table-of-contents)
 
 ### Locations
 
