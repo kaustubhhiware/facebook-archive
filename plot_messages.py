@@ -17,6 +17,7 @@ import datetime
 import matplotlib.pyplot as plt
 import operator
 import argparse
+import re
 
 
 class FacebookMessageAnalyser:
@@ -28,6 +29,7 @@ class FacebookMessageAnalyser:
         self.monthly_aggregate = None
         self.yearly_aggregate = None
         self.daily_aggregate = None
+        self.message_filename = "message.json"
 
     def __call__(self, messages_dir):
         self.conversations = self.get_all_conversation(messages_dir)
@@ -54,7 +56,9 @@ class FacebookMessageAnalyser:
             files = [x for x in os.listdir(
                 messages_dir+"/"+d) if os.path.isfile(messages_dir+"/"+d+"/"+x) == True]
             try:
-                if files[0] == "message.json":
+
+                if re.search(r'message(_\d+)?\.json', files[0]):
+                    self.message_filename = files[0]
                     conversations.append(d)
             except:
                 pass
@@ -66,7 +70,7 @@ class FacebookMessageAnalyser:
             Populate all the messages user has reciceved.
         """
         for convo in self.conversations:
-            f = messages_dir + "/" + convo + "/" + "message.json"
+            f = messages_dir + "/" + convo + "/" + self.message_filename
             with open(f) as msg_json_f:
                 msg_json = json.load(msg_json_f)
                 for msg in msg_json["messages"]:

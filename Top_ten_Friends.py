@@ -12,6 +12,7 @@ import datetime
 import matplotlib.pyplot as plt
 import argparse 
 import operator
+import re
 
 
 class dd_list(dict):
@@ -36,6 +37,7 @@ class FriendsIMessage(dd_list):
         self.top_ten_i_counts=dict()
         self.daily_aggregate=dd_list()
         self.daily_aggregate_i=dd_list()
+        self.message_filename = "message.json"
         
     def __call__(self,messages_dir):
         self.conversations=self.get_all_conversations(messages_dir)
@@ -57,7 +59,8 @@ class FriendsIMessage(dd_list):
         for d in dirs:
             files=[x for x in os.listdir(messages_dir+"/"+d) if os.path.isfile(messages_dir+"/"+d+"/"+x)==True]
             try:
-                if files[0]=="message.json":
+                if re.search(r'message(_\d+)?\.json', files[0]):
+                    self.message_filename = files[0]
                     conversations.append(d)
             except:
                 pass
@@ -70,7 +73,7 @@ class FriendsIMessage(dd_list):
            messages friendwise.
         """
         for convo in self.conversations:
-            f=messages_dir+"/"+convo+"/"+"message.json"
+            f=messages_dir+"/"+convo+"/"+self.message_filename
             with open(f) as msg_json_f:
                 msg_json=json.load(msg_json_f)
                 count=0

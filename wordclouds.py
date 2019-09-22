@@ -71,7 +71,7 @@ def wordcloud():
     else:
         print("No Comments found in data")
     
-    fname = loc+'/posts/your_posts.json'
+    fname = loc+'/posts/your_posts_1.json'
     if not os.path.isfile(fname):
         print("The file your_posts.json is not present at the entered location.")
         exit(1)
