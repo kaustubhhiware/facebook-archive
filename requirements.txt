@@ -1,7 +1,7 @@
 geopy==1.18.1
 matplotlib==3.0.3
 timestring==1.6.2
-numpy==1.16.2
+numpy==1.22.0
 pandas==0.24.1
 nltk==3.4
 plotly==3.7.0
