@@ -3,7 +3,7 @@ matplotlib==3.0.3
 timestring==1.6.2
 numpy==1.16.2
 pandas==0.24.1
-nltk==3.4
+nltk==3.6.6
 plotly==3.7.0
 tabulate==0.8.2
 Pillow==5.4.1
